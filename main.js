@@ -1,12 +1,12 @@
 //Практика Task 1
-
+/*
 var arr = [1,2,3,4,5,6];
 var temp = 0;
 
 console.log(arr);
 
 for (let i = 0; i < arr.length; i++) {
-    if (i % 2 == 0) {
+    if (i % 2 === 0) {
         temp = arr[i];
     }
     else {
@@ -19,45 +19,37 @@ console.log(arr);
 
 //Практика Task 2
 
-/*var arr1 = new Array(3);
-var sumMass = [];
-
+var arr1 = new Array(3);
 var sum = 0;
 var max = 0;
 var min = 0;
 
-for (var i = 0; i < arr1.length; i++) {
+for (let i = 0, size = arr1.length; i < size; i++) {
     arr1[i] = new Array(2);
-}
 
-for (let i = 0; i < arr1.length; i++) {
-    for (let j = 0; j < arr1.length; j++) {
+    sum = 0;
+    for (let j = 0; j < size; j++) {
         arr1[i][j] = Math.round(Math.random() * (15 - 1) + 1);
+        sum += arr1[i][j];
+    }
+
+    if (i == 0) {
+        min = sum;
+        max = sum;
+    }
+
+    if (sum <= min) {
+        min = sum;
+    }
+
+    if (sum > max) {
+        max = sum;
     }
 }
 
 console.log(arr1);
-
-for (let i = 0; i < arr1.length; i++) {
-    for (let j = 0; j < arr1.length; j++) {
-        sum += arr1[i][j];
-        console.log(sum + "-----SUM i="+i+" j="+j);
-
-        console.log(arr1[i][j]);
-        console.log(arr1[i][j] + " i=" + i + " j=" + j);
-
-        if (i === (arr1.length - 1)) {
-            sumMass.push(sum);
-            console.log(sum , "sum" + i);
-            sum = 0;
-        }
-    }
-}
-
 console.log(min, "min");
 console.log(max, "max");
-
-console.log(sumMass);*/
 
 // Тест Task 1
 
@@ -105,7 +97,7 @@ while (temp !== "&") {
 }
 
 console.log(arr5);
-
+*/
 
 // Лекция 
 
@@ -115,34 +107,47 @@ console.log(arr5);
 3. Поменять ряды местами (1 и 2 пункт) */
 
 
-/*var n = 3;
+var n = 4;
 var m = 3;
+var A = new Array(n);
 
-var sumMas = [];
-
-var a = new Array(n);
-
-for (var i = 0; i < a.length; i++) {
-    a[i] = new Array(m);
-}
+var sum2 = 0;
+var sumIndexMAX = 0;
+var sumIndexMIN = 0;
+var tempI = 0;
 
 for (let i = 0; i < n; i++) {
+    A[i] = new Array(m);
+
+    sum2 = 0;
     for (let j = 0; j < m; j++) {
-        a[i][j] = Math.round(Math.random() * (5 - 1) + 1);
+        A[i][j] = Math.round(Math.random() * (15 - 1) + 1);
+        sum2 += A[i][j];
+    }
+
+    if (i == 0) {
+        min = sum2;
+        max = sum2;
+    }
+
+    if (sum2 <= min) {
+        min = sum2;
+        sumIndexMIN = i;
+    }
+
+    if (sum2 > max) {
+        max = sum2;
+        sumIndexMAX = i;
     }
 }
 
-for (let i = 0; i < n; i++) {
-    for (let j = 0; j < m; j++) {
-        
-        sum += a[i][j];
-        console.log(sum , "--"+ i + "--" + j);
-        if (j === m-1) {
-            sumMas[i] = sum;
-        }
-    }
-}
+console.log(A);
 
-console.log(sumMas);
-console.log(a);
-console.log(sum);*/
+tempI = A[sumIndexMIN];
+A[sumIndexMIN] = A[sumIndexMAX];
+A[sumIndexMAX] = tempI;
+
+console.log(A);
+
+console.log(min + "-" + sumIndexMIN, "min");
+console.log(max + "-" + sumIndexMAX, "max");

@@ -139,13 +139,11 @@ for (let i = 0; i < n; i++) {
         max = sum2;
         sumIndexMAX = i;
     }
+
+    tempI = A[sumIndexMIN][i];
+    A[sumIndexMIN][i] = A[sumIndexMAX][i];
+    A[sumIndexMAX][i] = tempI;
 }
-
-console.log(A);
-
-tempI = A[sumIndexMIN];
-A[sumIndexMIN] = A[sumIndexMAX];
-A[sumIndexMAX] = tempI;
 
 console.log(A);
 
